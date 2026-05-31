@@ -1,0 +1,39 @@
+{
+  "name": "ledger-app",
+  "version": "1.0.0",
+  "description": "Desktop ledger app with sql.js",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && npm run bundle-electron && electron-builder",
+    "bundle-electron": "node scripts/bundle-electron.cjs",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "preact": "^10.25.0",
+    "sql.js": "^1.14.1",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.0",
+    "@types/sql.js": "^1.4.11",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.0",
+    "vite": "^6.1.0"
+  },
+  "build": {
+    "appId": "com.ledger.app",
+    "productName": "Ledger App",
+    "directories": { "output": "release" },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "linux": {
+      "target": ["deb"],
+      "category": "Finance"
+    }
+  }
+}
